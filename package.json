@@ -1,0 +1,30 @@
+{
+  "name": "gwg-alerts",
+  "version": "1.0.0",
+  "description": "Alert user of games available each month through XBOX's Games with Gold",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "zip": "7z a gwg-updater.zip ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kayron013/gwg-alerts.git"
+  },
+  "author": "Angel Campbell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kayron013/gwg-alerts/issues"
+  },
+  "homepage": "https://github.com/Kayron013/gwg-alerts#readme",
+  "dependencies": {
+    "ejs": "^2.7.1",
+    "fast-html-parser": "^1.0.1",
+    "node-fetch": "^2.6.0",
+    "nodemailer": "^6.3.0"
+  },
+  "devDependencies": {
+    "ejs-lint": "^0.3.0"
+  }
+}
