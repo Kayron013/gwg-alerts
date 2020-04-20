@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 const parser = require('fast-html-parser');
 
 const findGames = async () => {
-  const url = 'https://en.wikipedia.org/wiki/List_of_Games_with_Gold_games';
+  const url = 'https://xbox.fandom.com/wiki/List_of_Games_with_Gold';
   const page = await fetch(url)
     .then(res => res.text())
     .then(body => body)
@@ -24,19 +24,19 @@ const findGames = async () => {
  * @returns {Games} games from last two rows of `table`
  */
 const getGamesFromTable = table => {
-  const rows = table.querySelectorAll('tbody tr');
+  const rows = table.querySelectorAll('tr');
   const length = rows.length;
   const row1 = rows[length - 2].querySelectorAll('td');
   const game1 = {
     title: row1[1].rawText.trim(),
     availability: { from: row1[2].rawText.trim(), to: row1[3].rawText.trim() },
-    link: getGameLink(row1[1])
+    link: getGameLink(row1[1]),
   };
   const row2 = rows[length - 1].querySelectorAll('td');
   const game2 = {
     title: row2[1].rawText.trim(),
     availability: { from: row2[2].rawText.trim(), to: row2[3].rawText.trim() },
-    link: getGameLink(row2[1])
+    link: getGameLink(row2[1]),
   };
 
   return [game1, game2];

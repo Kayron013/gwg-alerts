@@ -1,5 +1,5 @@
 exports.current_month = new Intl.DateTimeFormat('en-US', {
-  month: 'long'
+  month: 'long',
 }).format(new Date());
 
 const email_template = require('./modules/email_template');
@@ -12,10 +12,11 @@ const main = async () => {
     const email_body = email_template(games);
     await sendEmail(email_body);
     console.log('email sent');
-    // console.dir(games, { depth: null });
   } catch (e) {
     console.log(e);
   }
 };
 
 exports.handler = main;
+
+//main();
