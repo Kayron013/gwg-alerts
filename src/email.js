@@ -1,18 +1,18 @@
 const nodemailer = require('nodemailer');
 const credentials = require('../private/email_credentials.json');
-const { current_month } = require('../index');
+const { currentMonth } = require('./date');
 
 const sendEmail = body => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
-    auth: credentials
+    auth: credentials,
   });
 
   const mailOptions = {
-    from: 'Cloud Angel',
+    from: 'Cloud Angel Notifications<me@gmail.com>',
     to: credentials.user,
-    subject: `${current_month} Games with Gold`,
-    html: body
+    subject: `${currentMonth} Games with Gold`,
+    html: body,
   };
 
   return transporter.sendMail(mailOptions);

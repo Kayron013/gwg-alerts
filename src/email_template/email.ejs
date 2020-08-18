@@ -1,0 +1,65 @@
+<style>
+  td {
+    padding: 5px 10px;
+  }
+</style>
+
+<h2><%= currentMonth %> Games</h2>
+<hr />
+
+<h3>Xbox 360</h3>
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Game</th>
+      <th colspan="2">Availability</th>
+    </tr>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(game of games.x360) { %>
+    <tr>
+      <td>
+        <% if(game.link){ %>
+        <a href="<%= game.link %>"><%= game.title %></a>
+        <% } else{ %> <%= game.title %> <% } %>
+      </td>
+      <td><%= game.availability.from %></td>
+      <td><%= game.availability.to %></td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<h3>Xbox One</h3>
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Game</th>
+      <th colspan="2">Availability</th>
+    </tr>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(game of games.x1) { %>
+    <tr>
+      <td>
+        <% if(game.link){ %> <% console.log(game.link) %>
+        <a href="<%= game.link %>"><%= game.title %></a>
+        <% } else{ %> <%= game.title %> <% } %>
+      </td>
+      <td><%= game.availability.from %></td>
+      <td><%= game.availability.to %></td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<h3>See something interesting?</h3>
+<button><a href="https://www.xbox.com/en-US/live/gold">Get games</a></button>

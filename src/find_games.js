@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 const parser = require('fast-html-parser');
 
 const findGames = async () => {
-  const url = 'https://xbox.fandom.com/wiki/List_of_Games_with_Gold';
+  const url = 'https://en.everybodywiki.com/List_of_Games_with_Gold_games';
   const page = await fetch(url)
     .then(res => res.text())
     .then(body => body)
@@ -45,13 +45,15 @@ const getGamesFromTable = table => {
 /**
  *
  * @param {parser.HTMLElement} td
- * @returns wiki link to game, if exists
+ * @returns wiki link to game, if exists, else, google search link
  */
 const getGameLink = td => {
   const anchor = td.querySelector('a');
-  if (!anchor) return null;
-  const baseURL = 'https://en.wikipedia.org';
-  return baseURL + anchor.attributes.href;
+  if (anchor && anchor.href) {
+    return `https://en.wikipedia.org${anchor.href}`;
+  }
+  const title = td.querySelector('i').childNodes[0].rawText;
+  return `https://google.com/search?q=${encodeURIComponent(title)}`;
 };
 
 module.exports = findGames;
