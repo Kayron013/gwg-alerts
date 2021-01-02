@@ -50,7 +50,7 @@
     <% for(game of games.x1) { %>
     <tr>
       <td>
-        <% if(game.link){ %> <% console.log(game.link) %>
+        <% if(game.link){ %>
         <a href="<%= game.link %>"><%= game.title %></a>
         <% } else{ %> <%= game.title %> <% } %>
       </td>

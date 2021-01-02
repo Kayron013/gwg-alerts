@@ -53,7 +53,8 @@ const getGameLink = td => {
     return `https://en.wikipedia.org${anchor.href}`;
   }
   const title = td.querySelector('i').childNodes[0].rawText;
-  return `https://google.com/search?q=${encodeURIComponent(title)}`;
+  const query = `${title} (video game)`;
+  return `https://google.com/search?q=${encodeURIComponent(query)}`;
 };
 
 module.exports = findGames;
